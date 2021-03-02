@@ -19,13 +19,15 @@ class YoloModel:
 
             for i in range(len(result.xywhn[0])):
                 x, y, w, h, prob, cls = result.xywhn[0][i].numpy()
-                preds = {}
-                preds['x'] = str(x)
-                preds['y'] = str(y)
-                preds['w'] = str(w)
-                preds['h'] = str(h)
-                preds['prob'] = str(prob)
-                preds['class'] = result.names[int(cls)]
+                preds = {
+                    'x': str(x),
+                    'y': str(y),
+                    'w': str(w),
+                    'h': str(h),
+                    'prob': str(prob),
+                    'class': result.names[int(cls)],
+                }
+
                 data.append(preds)
 
             return {'file_name': file_name, 'bbox': data}
